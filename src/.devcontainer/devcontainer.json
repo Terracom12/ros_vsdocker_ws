@@ -40,5 +40,10 @@
         "source=${localWorkspaceFolder}/../cache/humble/install,target=/home/ws/install,type=bind",
         "source=${localWorkspaceFolder}/../cache/humble/log,target=/home/ws/log,type=bind"
     ],
-    "postCreateCommand": "sudo rosdep update && sudo rosdep install --from-paths src --ignore-src -y && sudo chown -R matt /home/ws/"
+    "postCreateCommand": {
+        "source_ros": "echo 'source /opt/ros/humble/setup.bash' >> /home/matt/.bashrc",
+        "upgrade_rosdep": "sudo rosdep update && sudo rosdep install --from-paths src --ignore-src -y",
+        "ws_permissions": "sudo chown -R matt /home/ws/",
+        "python_packages": "pip3 install python-can odrive pygame ifcfg"
+    }
 }
